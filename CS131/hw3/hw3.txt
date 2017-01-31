@@ -1,0 +1,33 @@
+PERFORMANCE TIME FOR KENKEN USING PREDICATE "fd_set_vector_max(255), kenken_4(N,C), kenken(N,C,T)."
+
+Memory               limit         in use            free
+
+   trail  stack      16383 Kb            5 Kb        16378 Kb
+   cstr   stack      16383 Kb            9 Kb        16374 Kb
+   global stack      32767 Kb            6 Kb        32761 Kb
+   local  stack      16383 Kb            2 Kb        16381 Kb
+   atom   table      32768 atoms      1803 atoms     30965 atoms
+
+Times              since start      since last
+
+   user   time       0.519 sec       0.519 sec
+   system time       0.015 sec       0.015 sec
+   cpu    time       0.534 sec       0.534 sec
+   real   time     456.093 sec     456.093 sec
+
+PERFORMANCE TIME FOR PLAIN_KENKEN USING PREDICATE "kenken_4(N,C), plain_kenken(N,C,T)."
+
+Memory               limit         in use            free
+
+   trail  stack      16383 Kb            7 Kb        16376 Kb
+   cstr   stack      16383 Kb           10 Kb        16373 Kb
+   global stack      32767 Kb            6 Kb        32761 Kb
+   local  stack      16383 Kb            4 Kb        16379 Kb
+   atom   table      32768 atoms      1803 atoms     30965 atoms
+
+Times              since start      since last
+
+   user   time       0.777 sec       0.258 sec
+   system time       0.016 sec       0.001 sec
+   cpu    time       0.793 sec       0.259 sec
+   real   time     553.956 sec      17.585 sec

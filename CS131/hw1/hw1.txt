@@ -1,0 +1,63 @@
+Warmup 1: subset a b:
+	As a recursive function, I began with the base case of 'a' as an empty list, outputting
+	true (because an empty list is a subset of all sets). If 'a' contains elements, then
+	using the List module, we check if the head of 'a' is in the set b, and proceed to
+	recursively the tail of 'a' recursively using this method.
+
+Warmup 2: proper_subset a b:
+	In using my 'subset' function, we first check if 'b' is a subset of 'a' (checking for
+	equality). If true, then 'a' is not a subset of 'b'. However, if that is false, then
+	we return the value of whether or not 'a' is a subset of 'b'.
+
+Warmup 3: equal_sets a b:
+	I used my previously defined function 'subset' by using it to compare equality between
+	both sets 'a' and 'b'; that is, if 'a' is a subset of 'b' and 'b' is a subset of 'a', then
+	both sets are equal to each other.
+
+Warmup 4: set_diff a b:
+	As the base case, if 'a' is an empty set, we return an empty set. Next, using recursion,
+	we defined the case that if the head of 'a' is not an element in 'b', we apply CONS to
+	that element to the result of the recursive call of 'set_diff' on the tail of 'a'.
+	Otherwise, we apply 'set_diff' to the tail of 'a'.
+
+Warmup 5: computed_fixed_point eq f x:
+	Using an 'if...else' clause, we supply the definition of a fixed point for the if case,
+	that is, if x is equal to f(x), then we return x. Otherwise, we recursively call
+	computed_fixed_point on the function that takes in f(x). Given a function and value x
+	that doesn't resolve to anything, the function will fall into an infinite loop.
+
+Warmup 6: computed_periodic_point eq f p x:
+	As the base case, given the definition, if p=0, every point is a periodic point, hence, we
+	return x. Next, we check for equality between x and computed_periodic_point after one
+	iteration (that is p-1 and f (f x)), returning x if that is, in fact, the case.
+	Otherwise, we recursively apply the function computed_periodic_point on deeper
+	iterations that take in f(x) as input.
+
+Main function: filter_blind_alleys g:
+	As the main function of the assignment, I implemented it using a variety of helper 
+	functions; is_terminal determines if a given symbol is terminal or not, get_sym_val 
+	returns the value of a non-terminal symbol (A warming results from this function because
+	 of a non-exhaustive search; however, this will never be a problem as get_sym_val will
+	  never be called on a terminal symbol), found_next_rule returns a boolean depending on 
+	  whether or not a given symbol value has a rule it may resolve to, return_next_rule
+	   returns the next rule that the given symbol value resolves to, create_nonterminals 
+	   creates a list containing the non-terminals in the supplied list of rules, and 
+	   is_terminal_rule determines if a given rule is terminal or not.
+
+	The main helper function, is_terminal_rule performs a bulk of the filtering process.
+	 In approaching this function, I determined that a rule would return true if all it's
+	  subrules resolved to terminal or if it was empty and false if there was one subrule
+	   that was a non-terminal. Hence, for each subrule within the rule itself, I would
+	    test if it was terminal or not by: calling is_terminal (the simple case), or 
+	    found_next_rule (if a rule for a given value could not be found, then it would 
+	    be a non-terminal and return false) or recursively call is_terminal_rule on a 
+	    smaller subset of the originally supplied rules. In this recursive call, I would
+	     call it on the set of rules that would exclude the rule of the previous iteration,
+	      that is, if a rule needs to call itself in order to resolve, it is a non-terminal.
+	       From here, I would gradually reduce the originally supplied rule list (with subrules)
+	        until it either resolves to an empty list (all terminal) or until it returns a false
+	         (contains a non-terminal).
+
+	Using all these helper functions, I implemented filter_blind_alleys by returning a grammar
+	 containing rules formulated by the set difference (as defined above) of all the original 
+	 rules and the non-terminals created by create_nonterminals.

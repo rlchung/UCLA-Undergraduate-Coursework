@@ -1,0 +1,75 @@
+java version "1.8.0_31"
+Java(TM) SE Runtime Environment (build 1.8.0_31-b13)
+Java HotSpot(TM) 64-Bit Server VM (build 25.31-b07, mixed mode)
+
+javac 1.8.0_31
+
+processor   : 0 
+vendor_id   : GenuineIntel
+cpu family  : 6 
+model       : 44
+model name  : Intel(R) Xeon(R) CPU           E5620  @ 2.40GHz
+stepping    : 2 
+microcode   : 12
+cpu MHz     : 1596.000
+cache size  : 12288 KB
+physical id : 1 
+siblings    : 8 
+core id     : 0 
+cpu cores   : 4 
+apicid      : 32
+initial apicid  : 32
+fpu     : yes 
+fpu_exception   : yes 
+cpuid level : 11
+wp      : yes 
+flags       : fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc arch_perfmon pebs bts rep_good xtopology nonstop_tsc aperfmperf pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 cx16 xtpr pdcm pcid dca sse4_1 sse4_2 popcnt aes lahf_lm ida arat epb dts tpr_shadow vnmi flexpriority ept vpid
+bogomips    : 4788.37
+clflush size    : 64
+cache_alignment : 64
+address sizes   : 40 bits physical, 48 bits virtual
+power management:
+
+MemTotal:       32865700 kB
+MemFree:         3621548 kB
+Buffers:          375288 kB
+Cached:         27112176 kB
+SwapCached:         7640 kB
+Active:          1526696 kB
+Inactive:       26121244 kB
+Active(anon):     135892 kB
+Inactive(anon):    25148 kB
+Active(file):    1390804 kB
+Inactive(file): 26096096 kB
+Unevictable:           0 kB
+Mlocked:               0 kB
+SwapTotal:      20972820 kB
+SwapFree:       20957420 kB
+Dirty:                24 kB
+Writeback:             0 kB
+AnonPages:        155940 kB
+Mapped:            32788 kB
+Shmem:               544 kB
+Slab:            1349916 kB
+SReclaimable:    1259912 kB
+SUnreclaim:        90004 kB
+KernelStack:        4120 kB
+PageTables:        13856 kB
+NFS_Unstable:          0 kB
+Bounce:                0 kB
+WritebackTmp:          0 kB
+CommitLimit:    37405668 kB
+Committed_AS:    1255508 kB
+VmallocTotal:   34359738367 kB
+VmallocUsed:      336448 kB
+VmallocChunk:   34342227416 kB
+HardwareCorrupted:     0 kB
+AnonHugePages:     59392 kB
+HugePages_Total:       0   
+HugePages_Free:        0   
+HugePages_Rsvd:        0   
+HugePages_Surp:        0   
+Hugepagesize:       2048 kB
+DirectMap4k:        4580 kB
+DirectMap2M:     2082816 kB
+DirectMap1G:    31457280 kB

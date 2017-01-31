@@ -1,0 +1,79 @@
+For the warmup "convert_grammar gram1," we are given a single parameter "gram1" 
+which is a given grammar with the format (starting symbol, a list of rules). 
+The format for a Homework 2-style grammar follows the format (starting symbol, 
+production rules for a single nonterminal). After isolating the start symbol, 
+the main difficulty of this problem was to condense each given input rule into 
+a function that mapped each nonterminal to a list of rhs's. To handle this, I 
+thought it would be best to create a recursive helper function "prod_func" that
+would return this aforementioned function. First, I had difficulty in figuring
+out how to use prod_func within "convert_grammar" so that it would become an 
+second argument that took in an input nonterminal. However, I found that by 
+leaving out the nonterminal, the function, waits for input in order to produce 
+the corresponding rules from the rule list.
+
+Given that we are trying to parse each rule into their own nonterminal category
+, if the rule list matches as empty, wewould return the empty list base case 
+(ending our function). As the main condition, giventhat the list is full, we 
+iterate through the list and compare the input nonterminal with the nonterminal
+head within the given individual rule, appending it to the recursive call of 
+prod_func on the rest of the list or recursively calling prod_func on just the 
+tail (ignoring the head element). This successively creates a function that maps
+a nonterminal to a series of rules as each matched rule is appended to a larger 
+set of rules created by recursively calling prod_func.
+
+For the main function "parse_prefix," I had great difficulty in defining the 
+basic structure of what I needed for the function (helper functions, arguments, 
+etc.) First, I established that I would need a series of helper functions that 
+took in arguments that included the following:a given nonterminal (to build the
+derivation list and to feed into the second argument of our grammar), the 
+production rules that would branch into a series of subrules that we need to 
+parse through, the given list of rules that are made available to us, the given
+rule that we are currently parsing through, and the acceptor and its relative 
+arguments. I established that I needed a function with nested functions
+that would handle each micro-task such as doing the overall parsing (parser),
+iterating through each rule for a given nonterminal (iterate_rules), and going
+through the symbols of each rule until we reach a terminal symbol at which we 
+can compare it to the elements of the input fragment(valid_frag). Given that
+these function were all independent on each other, I used the structure that
+would allow for the recursive calling of each other function.
+
+Knowing that valid_frag would be the most comprehensive function, I began
+bottom-up defining the overall parser function, which would return the result
+of "iterate_rules," a result of Some (x,y); that is if the iterate_rules 
+returned an object of Some(x,y) we know that the fragment would be valid
+(as opposed to returning None).
+
+Next, iterate_rules is a function dependence on the list of rhs's of a given
+nonterminal. Hence, type matching rhs_list, the base case would be an empty
+list. If it isn't empty, there are rules within them which we can pass onto
+our main function "valid_frag" to validate our input fragment. Depending on
+this return value, we return the result of valid_frag, which may be either
+Some (x,y) (Success) or None (a failure); if None is returned, we
+perform iterate_rules once again on the remaining rules of the list
+
+Last, valid_frag was difficult to implement correctly. I used an initial
+matching to deal with the given input rhs; if it was empty, it would return
+an acceptor result (a Success as valid_frag recursively trims rule_rhs
+based on the equality between the elements of rhs and frag) and if it wasn't
+it would continue. If it wasn't empty, frag would them be type-matched; if
+frag was empty, we would return None (given that an acceptor wasn't returned
+this is equivalent to a fail), and if it wasn't, then we would continue to
+more precise comparisions of each element of frag.
+
+In this next step, I had implemented 2 ways to compare each element of frag
+to that of rule_rhs, the first of which failing to run the test cases. However
+the basic structure was the same. At this step, we had to compare each value 
+within the input rule (rule_rhs) to see if we needed to dive into another
+iteration of the parser (a nonterminal) or if the terminal value matched that
+of the current element of frag. If it was a nonterminal, we would feed that
+nonterminal symbol into the overall parser for another iteration. If
+it was a terminal symbol and it matched the same value as the head of frag,
+we would then run valid_frag again on the tail of frag with the remaining rule
+list. If it was a terminal whose value didn't match frag, we returned None.
+
+My intial implementation of this previous step used two helper functions,
+"get_val" and "is_terminal" which retrieved the status and value of the given
+symbol. However, I ended up receiving type mismatch errors with the input tests
+and realized that it was because of type inferencing. To correct this, I used
+matching patterns match the given symbols. This ended up being the correct
+implementation.

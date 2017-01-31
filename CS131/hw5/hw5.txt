@@ -1,0 +1,25 @@
+In approaching this assignment, I referred to the code provided by the hint link
+(most of my solution uses this solution code as its basis). As mentioned in the spec,
+instead of using acceptor functions, I had first approached the code by trying to remove
+each instance of "accept" and instead, providing a call to call/cc so that I may
+utilize a backtracking/continuation instance. However, I had a great amount of difficulty
+trying to get this implementation to work (I assume that most of my error was in where
+I placed my call/cc anonymous function). I abandoned this implementation; however, in looking
+back to the hint code, I realized that instead of removing every iteration of "accept," I
+could replace it exactly with another defined function called "backtracker" that would
+perform the call/cc mechanism. Doing so preserved the original style of the hint code (which
+I assumed worked perfectly and made the proper calls to the acceptor when need be), while
+implementing the continuation interface that the spec called for.
+
+While testing my program however, I did come accross one issue. In testing my program with 
+the command (match-all? matcher4 frag2) and anything that involved "matcher4," I would
+routinely fail this test, receiving the wrong test output (#f). This was because of my
+former definition of "backtracker":
+
+	(define backtracker 
+	(lambda (frag)
+		(call/cc (lambda (cc) (cons frag (lambda () cc #f))))))
+
+In this implementation, the body code for the inner lambda() was incorrect in that
+its body was implemented without parentheses. In providing parenthesis, this solved
+this issue and passed all the tests.

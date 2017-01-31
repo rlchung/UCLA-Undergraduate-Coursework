@@ -1,0 +1,59 @@
+1.
+Break 27 [29]> (TREE-CONTAINS 3 '((1 2 3) 7 8))
+T
+Break 27 [29]> (TREE-CONTAINS 4 '((1 2 3) 7 8))
+NIL
+
+2.
+Break 27 [29]> (TREE-MAX '((1 2 3) 7 8))
+8
+
+3.
+Break 27 [29]> (TREE-ORDER 3)
+(3)
+Break 27 [29]> (TREE-ORDER '((1 2 3) 7 8))
+(1 2 3 7 8)
+
+4.
+Break 27 [29]> (SUB-LIST '(a b c d) 0 3) 
+(A B C)
+Break 27 [29]> (SUB-LIST '(a b c d) 3 1)
+(D)
+Break 27 [29]> (SUB-LIST '(a b c d) 3 0)
+NIL
+
+5.
+Break 26 [28]> (SPLIT-LIST '(a b c d))
+((A B) (C D))
+Break 26 [28]> (SPLIT-LIST '(a b c d e))
+((A B) (C D E))
+Break 26 [28]> (SPLIT-LIST '(a b c d e f))
+((A B C) (D E F))
+
+6.
+Break 25 [27]> (LIST2BTREE '(1))
+1
+Break 25 [27]> (LIST2BTREE '(1 2))
+(1 2)
+Break 25 [27]> (LIST2BTREE '(1 2 3))
+(1 (2 3))
+Break 25 [27]>  (LIST2BTREE '(1 2 3 4))
+((1 2) (3 4))
+Break 25 [27]> (LIST2BTREE '(1 2 3 4 5 6 7))
+((1 (2 3)) ((4 5) (6 7)))
+Break 25 [27]>  (LIST2BTREE '(1 2 3 4 5 6 7 8))
+(((1 2) (3 4)) ((5 6) (7 8)))
+
+7. 
+Break 25 [27]> (BTREE2LIST 1)
+(1)
+Break 25 [27]> (BTREE2LIST '(1 2))
+(1 2)
+Break 25 [27]> (BTREE2LIST '(1 (2 3))) 
+(1 2 3)
+Break 25 [27]> (BTREE2LIST '((1 2) (3 4))) 
+(1 2 3 4)
+Break 25 [27]> (BTREE2LIST '((1 (2 3)) ((4 5) (6 7))))
+(1 2 3 4 5 6 7)
+Break 25 [27]> (BTREE2LIST '(((1 2) (3 4)) ((5 6) (7 8))))
+(1 2 3 4 5 6 7 8)
